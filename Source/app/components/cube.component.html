@@ -91,3 +91,46 @@
 </div>
 
 <div class="clearfix"></div>
+
+<table class="cube-report">
+    <tr>
+        <th>Coord (x,y,z)</th>
+        <th>1 (Front)</th>
+        <th>2 (Right)</th>
+        <th>3 (Left)</th>
+        <th>4 (Top)</th>
+        <th>5 (Back)</th>
+        <th>6 (Bottom)</th>
+        <th>Shape</th>  
+    </tr>
+    <tr *ngIf="cube.selectedSide" class="selected"
+        style=" ">
+        <td>{{cube.selectedSide.parent.displayCoord.x}},{{cube.selectedSide.parent.displayCoord.y}},{{cube.selectedSide.parent.displayCoord.z}}</td>
+        <td *ngFor="#side of cube.selectedSide.parent.sides">
+            <div 
+                title="{{side.title}}" 
+                class="sideType-{{side.sideTypeTrimmedName}}">
+            </div>
+            <label>{{side.sideTypeTrimmedName}}</label>
+        </td>
+        <td>
+            {{cube.selectedSide.parent.parentShape.name}}
+        </td>
+    </tr>
+    
+    <tr 
+        *ngFor="#block of cube.blocks"
+        style="display:{{block.visible ? 'inherited' : 'none'}}">
+        <td>{{block.displayCoord.x}},{{block.displayCoord.y}},{{block.displayCoord.z}}</td>
+        <td *ngFor="#side of block.sides">
+            <div 
+                title="{{side.title}}" 
+                class="sideType-{{side.sideTypeTrimmedName}}">
+            </div>
+            <label>{{side.sideTypeTrimmedName}}</label>
+        </td>
+        <td>
+            {{block.parentShape.name}}
+        </td>
+    </tr>
+<table>

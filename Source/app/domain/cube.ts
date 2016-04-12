@@ -17,7 +17,7 @@ export class Cube{
             this.fillEmptyRegion();
         }
         
-        return this._blocks;
+        return this._blocks.sort((a, b) => a.displayCoord.hash - b.displayCoord.hash );
     }
     
     set blocks(value) {
@@ -63,10 +63,6 @@ export class Cube{
             || options.z[b.coord.z]; 
             b.visible = !hidden;
         })
-    }
-    
-    hideTextures(hide){
-        this.blocks.forEach(b => b.hideTextures(hide));
     }
     
     applyShapes(shapeCollection){

@@ -56,10 +56,6 @@ export class CubeComponent implements OnInit {
         shape.toggleVisibility();
     }
     
-    toggleTextures(){
-        //this.cube.hideTextures(!this.textures);
-    }
-    
     reset(){
         this.texturesVisible = true;
         this.trimmedVisible = false;

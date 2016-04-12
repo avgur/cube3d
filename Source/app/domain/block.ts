@@ -6,6 +6,12 @@ import { Shape } from './shape'
  
 
 export class Block {
+    private coordMap = {
+        x: [0, 1, 2],
+        y: [2, 1, 0],
+        z: [0, 1, 2]
+    };
+    
     public type: BlockType;
     public sides: Side[];
     public parentShape: Shape;
@@ -38,12 +44,16 @@ export class Block {
         return this.sides[SideKind.Bottom];
     }
     
+    get displayCoord() : Coord{
+        let coord = this.coord;
+        let x = this.coordMap.x[coord.x];
+        let y = this.coordMap.y[coord.y];
+        let z = this.coordMap.z[coord.z];
+        return new Coord(x, y, z);
+    }
+    
     with(sideKind: SideKind, sideType: SideType) : Block{
         this.sides[sideKind].sideType = sideType;
         return this;
-    }
-    
-    hideTextures(hide){
-        this.sides.forEach(s => s.showTextures = !hide);
     }
 }

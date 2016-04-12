@@ -116,12 +116,13 @@ body {
 .viewport section > div:nth-child(6) {
     transform:  rotateX(-90deg) rotateY(0deg) rotateZ(0deg) translate3d(0px, -75px, 150px);
 }
+
 .cube section > div > div {
     background-color: lightgoldenrodyellow;
     background-repeat: no-repeat;
     1opacity: 0.4;
-    width: 150px;
-    height: 150px;    
+    width: 149px;
+    height: 149px;    
 }
 
 .hideTextures .cube section > div > div {
@@ -245,9 +246,18 @@ body {
     
 }
 
-
-
 .side-Trimmed {
+}
+
+.cube section.block-selected > div { 
+	border: 1px solid lightblue;
+    border-bottom-width: 3px;
+}
+
+.cube section.block-selected > div > div
+{
+    width: 148px;
+    height: 146px;    
 }
 
 
@@ -391,4 +401,35 @@ section.trimmed-Back > div:nth-child(3) { border-left: none;}
 .cube-options .axes button.inactive,
 .cube-options .shapes button.inactive{
     border-style: inset;
+}
+
+table.cube-report {
+    border-collapse: collapse;
+}
+.cube-report th {
+    width: 100px;
+    border-top: 4px solid gray;
+    border-bottom: 4px solid gray;
+}
+
+.cube-report tr.selected {
+    background-color: antiquewhite; 
+    border-bottom: 4px solid gray;
+}
+
+.cube-report td label {
+    font-size: 0.6em;
+}
+.cube-report td { 
+    text-align: center;
+    padding: 5px;
+    border-bottom: 1px solid lightgrey;
+}
+.cube-report div {
+    zoom:0.5;
+    width:150px; 
+    height:150px; 
+    background-color:lightgoldenrodyellow;
+    
+    margin: auto;
 }

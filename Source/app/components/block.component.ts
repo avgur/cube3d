@@ -31,8 +31,11 @@ export class BlockComponent  {
         let str = '';
         this.block.sides.forEach(side => {
             if(side.trimmed){
-                let sideKindName = SideKind[side.sideKind];
-                let k = `trimmed-${sideKindName}`;
+                let k = `trimmed-${side.sideKindName}`;
+                str += k + ' ';
+            }
+            if(side.selected){
+                let k = `block-selected`;
                 str += k + ' ';
             }
         });
@@ -41,20 +44,22 @@ export class BlockComponent  {
     }
     
     setSideClass(side: Side){
-        var name = SideType[side.sideType];
-        let className = `sideType-${name}`;
+        let className = `sideType-${side.sideTypeName}`;
         if(side.selected) {
             className += ' side-selected';
         }    
         return className;
     }
     
-    selected(side:Side){
-        if(this.block.parentCube.selectedSide)
+    select(side:Side){
+        
+        var oldSelected = this.block.parentCube.selectedSide;
+        if(oldSelected)
         {
-            this.block.parentCube.selectedSide.selected = false;
+            oldSelected.selected = false;
         }
-        side.selected = true;
-        this.block.parentCube.selectedSide = side;
+        
+        side.selected = (side !== oldSelected);
+        this.block.parentCube.selectedSide = side.selected ? side : null;
     }
 }

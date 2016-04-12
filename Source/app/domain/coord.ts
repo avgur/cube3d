@@ -9,4 +9,8 @@ export class Coord{
     get id(){
         return `${this.x}${this.y}${this.z}`;
     }
+    
+    get hash(){
+        return this.z*1 + this.y*3 + this.x*9;
+    }
 }
