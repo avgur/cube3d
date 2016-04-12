@@ -21,21 +21,22 @@
     <script src="vendors/angular2/http.dev.js"></script>
     <script src="vendors/angular2/router.dev.js"></script>
         
+    <!-- no_build_ :template
+    <script src="js/app.min.js"></script>
+    /build -->
     <script>
-System.config({
-  defaultJSExtensions: false,
-  transpiler: false,
-  
-  packages: {
-    "app": {
-      "format": "register",
-      "defaultExtension": "js"
-    },
-    "node_modules": {
-      "defaultExtension": "js"
-    }
-  }
-});
+        System.config({
+            defaultJSExtensions: false,
+            packages: {
+                "app": {
+                    "format": "register",
+                    "defaultExtension": "js"
+                },
+                "node_modules": {
+                    "defaultExtension": "js"
+                }
+            }
+        });
     </script>
   </head>
   <body>
