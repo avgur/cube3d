@@ -1,1 +1,51 @@
-hello wold
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Cube 3d</title>
+    
+    <link rel="stylesheet" href="css/styles.min.css"/>
+    
+    <!-- IE required polyfills, in this exact order -->
+    <script src="vendors/es6-shim/es6-shim.js"></script>
+    <script src="vendors/systemjs/system-polyfills.src.js"></script>
+    <script src="vendors/angular2/shims_for_IE.js"></script>
+    <script src="vendors/angular2/angular2-polyfills.js"></script>
+    <script src="vendors/systemjs/system.src.js"></script>
+    
+    <script src="vendors/rxjs/Rx.js"></script>
+    <script src="vendors/angular2/angular2.dev.js"></script>
+    <script src="vendors/angular2/http.dev.js"></script>
+    <script src="vendors/angular2/router.dev.js"></script>
+        
+    <script>
+System.config({
+  defaultJSExtensions: false,
+  transpiler: false,
+  
+  packages: {
+    "app": {
+      "format": "register",
+      "defaultExtension": "js"
+    },
+    "node_modules": {
+      "defaultExtension": "js"
+    }
+  }
+});
+    </script>
+  </head>
+  <body>
+    
+    <app-shell>Loading...</app-shell>
+    
+    <script>
+      System.import('app/main').then(null, console.error.bind(console));
+    </script>
+    <script src="vendors/jquery/jquery.js"></script>
+    <script src="js/touch.min.js"></script>
+  </body>
+</html>
