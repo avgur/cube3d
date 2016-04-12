@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Cube 3d</title>
+    
+    <!-- build:css css/styles.min.css -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- /build -->
+    
+    <!-- IE required polyfills, in this exact order -->
+    <script src="vendors/es6-shim/es6-shim.js"></script>
+    <script src="vendors/systemjs/system-polyfills.src.js"></script>
+    <script src="vendors/angular2/shims_for_IE.js"></script>
+    <script src="vendors/angular2/angular2-polyfills.js"></script>
+    <script src="vendors/systemjs/system.src.js"></script>
+    
+    <script src="vendors/rxjs/Rx.js"></script>
+    <script src="vendors/angular2/angular2.dev.js"></script>
+    <script src="vendors/angular2/http.dev.js"></script>
+    <script src="vendors/angular2/router.dev.js"></script>
+        
+    <!-- build:js inline -->
+    <script src="config.js"></script>
+    <!-- /build -->
+  </head>
+  <body>
+    
+    <app-shell>Loading...</app-shell>
+    
+    <script>
+      System.import('app/main').then(null, console.error.bind(console));
+    </script>
+    <script src="vendors/jquery/jquery.js"></script>
+    <!-- build:js js/touch.min.js -->
+    <script src="js/touch.js"></script>
+    <!-- /build -->
+  </body>
+</html>

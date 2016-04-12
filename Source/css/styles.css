@@ -1,0 +1,394 @@
+body {
+    margin: 0;
+    font-family: Verdana,sans-serif;
+    padding: 30px;
+}
+
+.clearfix { 
+    clear: both; float: none;
+}
+
+.showroom {	
+	width: 500px;
+	cursor: pointer;
+	border: 4px solid gray;
+    float: left;
+    margin: 0 30px 30px 0; 
+}
+
+.viewport {
+	width: 500px;
+	height: 500px;
+	perspective: 4200px;
+	perspective-origin: 50% 50%;
+	transform: scale(0.6, 0.6);
+	transform-origin: 50% 50%;
+}
+
+.viewport .axes {
+	width: 90%;
+	height: 1px;
+	position: absolute;
+	top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display:none;
+}
+
+.viewport .axes > div {
+	position: absolute;
+	height: 1px;
+	width: 100%;
+	aopacity: 0.8;
+}
+
+.viewport .axes div:nth-child(1) {
+	background-color: blue;	
+}
+
+.viewport .axes div:nth-child(2) {
+	transform: rotateZ(90deg);
+	background-color: red;
+}
+
+.viewport .axes div:nth-child(3) {
+	transform: rotateY(90deg);
+	background-color: green;
+}
+
+.cube {
+	/* required start */
+	width: 450px;
+	height: 450px;
+	position: absolute;
+	top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform-style: preserve-3d;
+	/* required end */
+
+    transition: transform 50ms linear;
+    transform: rotateX(-20deg) rotateY(30deg);
+}
+
+.cube section {
+	/* required start */
+	width: 150px;
+	height: 150px;
+	position: absolute;
+	top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+	transform-style: preserve-3d;
+	/* required end */
+}
+
+.cube section > div { 
+	box-sizing: border-box;
+	border: 1px solid #888;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    transform-origin: 0px 0px 0px;
+}
+
+.viewport section > div:nth-child(1) {
+    transform:  rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate3d(0, 0, 75px);
+}
+.viewport section > div:nth-child(2) {
+    transform:  rotateX(0deg) rotateY(90deg) rotateZ(0deg) translate3d(-75px, 0, 150px);
+}
+.viewport section > div:nth-child(3) {
+    transform:  rotateX(0deg) rotateY(-90deg) rotateZ(0deg) translate3d(-75px, 0, 0);
+}
+.viewport section > div:nth-child(4) {
+    transform:  rotateX(90deg) rotateY(0deg) rotateZ(0deg) translate3d(0, -75px, 0);
+}
+.viewport section > div:nth-child(5) {
+    transform:  rotateX(0deg) rotateY(180deg) rotateZ(0deg) translate3d(-150px, 0, 75px);
+}
+.viewport section > div:nth-child(6) {
+    transform:  rotateX(-90deg) rotateY(0deg) rotateZ(0deg) translate3d(0px, -75px, 150px);
+}
+.cube section > div > div {
+    background-color: lightgoldenrodyellow;
+    background-repeat: no-repeat;
+    1opacity: 0.4;
+    width: 150px;
+    height: 150px;    
+}
+
+.hideTextures .cube section > div > div {
+    display: none;
+}
+
+
+.sideType-GroundWithGrass {
+    background: url(../images/page_1.jpg) 0px 0px;
+}
+
+.sideType-Stone {
+    background: url(../images/page_1.jpg) 0 -150px;
+}
+
+.sideType-Ground {
+    background: url(../images/page_1.jpg) -300px -150px;
+}
+
+.sideType-StoneWithGrass {
+    background: url(../images/page_1.jpg) 0 -300px;
+}
+
+.sideType-StoneWithFlower {
+    background: url(../images/page_1.jpg) -150px -300px;
+}
+
+.sideType-GroundWithBottomGrass {
+    background: url(../images/page_1.jpg) -300px -300px;
+}
+
+.sideType-GroundWithGrassAndFlowerHead {
+    background: url(../images/page_2.jpg) 0 0;
+}
+
+.sideType-Tree {
+    background: url(../images/page_2.jpg) -150px 0;
+}
+
+.sideType-GroundWithFlowerStick {
+    background: url(../images/page_2.jpg) 0 -150px;
+}
+
+.sideType-Sand {
+    background: url(../images/page_2.jpg) -300px -150px;
+}
+
+.sideType-GroundWithFlowerStickAndGrass {
+    background: url(../images/page_2.jpg) 0px -300px ;
+}
+
+.sideType-TreeWithGrass {
+    background: url(../images/page_2.jpg) -150px -300px;
+}
+
+.sideType-SandWithGrass {
+    background: url(../images/page_2.jpg) -300px -300px;
+}
+
+.sideType-Gold {
+    background: url(../images/page_3.jpg) 0 -150px;
+}
+
+.sideType-GoldWithFlower {
+    background: url(../images/page_3.jpg) -150px -300px;
+}
+
+.sideType-Grass {
+    background: url(../images/page_4.jpg) 0px 0px ;
+}
+
+.sideType-GrassWithHStairs {
+    background: url(../images/page_4.jpg) 0px -300px ;
+}
+
+.sideType-GrassWithVStairs {
+    background: url(../images/page_4.jpg) -150px 0px ;
+}
+
+.sideType-GrassWithCStairs {
+    background: url(../images/page_4.jpg) -150px -300px ;
+}
+
+.sideType-ShearTree {
+    background: url(../images/page_4.jpg) -300px -150px ;
+}
+
+.sideType-GroundWithGrassAndStairs {
+    background: url(../images/page_5.jpg) 0 0 ;
+}
+
+.sideType-SandWithStairs {
+    background: url(../images/page_5.jpg) 0 -150px ;
+}
+
+.sideType-SandWithStairsAndGrass {
+    background: url(../images/page_5.jpg) 0 -300px ;
+}
+
+.sideType-SandWithFlower {
+    background: url(../images/page_5.jpg) -150px -300px;
+}
+
+.sideType-GoldWithGrass {
+    background: url(../images/page_5.jpg) -300px -300px;
+}
+
+.sideType-StoneOnGrass {
+    background: url(../images/page_6.jpg) -300px -300px;
+}
+
+.sideType-Coal {
+    background: url(../images/page_6.jpg) -150px -150px;
+}
+
+.sideType-Diamand {
+    background: url(../images/diamand.jpg) 0 0;
+}
+
+.sideType-Undefined {
+    
+}
+
+
+
+.side-Trimmed {
+}
+
+
+.hideTrimmed .side-Trimmed  {
+    background: transparent;
+    border: none;
+}
+
+/*
+.hideTextures section > div {
+     border: 4px solid;
+     border-left-color: red;
+     border-right-color: green;
+     border-top-color: gray;
+     border-bottom-color: blue;
+     
+}*/
+
+.trimmed-Front > div:nth-child(1) > div, 
+.trimmed-Right > div:nth-child(2) > div,
+.trimmed-Left > div:nth-child(3) > div,
+.trimmed-Top > div:nth-child(4) > div,
+.trimmed-Back > div:nth-child(5) > div,
+.trimmed-Bottom  > div:nth-child(6) > div
+.trimmed-Front > div:nth-child(1), 
+.trimmed-Right > div:nth-child(2),
+.trimmed-Left > div:nth-child(3),
+.trimmed-Top > div:nth-child(4),
+.trimmed-Back > div:nth-child(5),
+.trimmed-Bottom  > div:nth-child(6)
+{
+    background-image: none;
+    border: none important;
+}
+
+/*
+section.trimmed-Left > div:nth-child(1),
+Dsection.trimmed-Left > div:nth-child(2),
+section.trimmed-Left > div:nth-child(3),
+section.trimmed-Left > div:nth-child(4),
+Dsection.trimmed-Left > div:nth-child(5),
+section.trimmed-Left > div:nth-child(6) { border-left: none; }
+
+section.trimmed-Left > div:nth-child(5) { border-right: none; }
+
+
+section.trimmed-Right > div:nth-child(1),
+section.trimmed-Right > div:nth-child(2),
+Dsection.trimmed-Right > div:nth-child(3),
+section.trimmed-Right > div:nth-child(4),
+Dsection.trimmed-Right > div:nth-child(5),
+section.trimmed-Right > div:nth-child(6) { border-right: none }
+
+section.trimmed-Right > div:nth-child(5) { border-left: none; }
+
+
+section.trimmed-Top > div:nth-child(1),
+section.trimmed-Top > div:nth-child(2),
+section.trimmed-Top > div:nth-child(3),
+section.trimmed-Top > div:nth-child(4),
+section.trimmed-Top > div:nth-child(5),
+Dsection.trimmed-Top > div:nth-child(6) { border-top: none; }
+
+section.trimmed-Bottom > div:nth-child(5) { border-bottom: 100px solid green; }
+
+
+section.trimmed-Bottom > div:nth-child(1),
+section.trimmed-Bottom > div:nth-child(2),
+section.trimmed-Bottom > div:nth-child(3),
+Dsection.trimmed-Bottom > div:nth-child(4),
+section.trimmed-Bottom > div:nth-child(5),
+section.trimmed-Bottom > div:nth-child(6) { border-bottom: none; }
+
+AAAsection.trimmed-Bottom > div:nth-child(5) { border-top: none; }
+
+
+section.trimmed-Front > div:nth-child(6) { border-top: none;}
+section.trimmed-Front > div:nth-child(3) { border-right: none;}
+section.trimmed-Front > div:nth-child(4) { border-bottom: none;}
+section.trimmed-Front > div:nth-child(2) { border-left: none;}
+
+section.trimmed-Back > div:nth-child(4) { border-top: none;}
+section.trimmed-Back > div:nth-child(2) { border-right: none;}
+section.trimmed-Back > div:nth-child(6) { border-bottom: none;}
+section.trimmed-Back > div:nth-child(3) { border-left: none;}
+
+*/
+
+
+
+
+/* options panel */
+.cube-options  {
+    float: right;
+    width: 230px;
+}
+.cube-options-panel{
+    border: 1px solid gray;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.cube-options-panel .panel-header{
+    background: #fc0;
+    padding: 10px;
+    border-bottom: 1px solid gray;
+    font-weight: bold;
+    color: gray;
+    font-size: 1.3em;
+}
+.cube-options .panel-body {
+    padding: 10px;
+    font-size: 0.9em;
+}
+
+.cube-options label {
+    cursor: pointer;
+}
+
+.cube-options .hint {
+    font-size: 0.7em;
+}
+
+.cube-options .actions {
+    text-align: right;
+    padding: 4px;
+    font-size: 1.4em;
+}
+
+.cube-options .axes .control-group,
+.cube-options .shapes .control-group{
+    text-align: center;
+}
+
+.cube-options .axes button ,
+.cube-options .shapes button {
+    width: 50px;
+    display: inline-block;
+    margin: 3px;
+}
+
+.cube-options .axes button.inactive,
+.cube-options .shapes button.inactive{
+    border-style: inset;
+}
