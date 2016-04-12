@@ -20,7 +20,7 @@ System.register(['./coord', './block_library'], function(exports_1, context_1) {
                         if (!this._blocks) {
                             this.fillEmptyRegion();
                         }
-                        return this._blocks;
+                        return this._blocks.sort(function (a, b) { return a.displayCoord.hash - b.displayCoord.hash; });
                     },
                     set: function (value) {
                         this._blocks = value;
@@ -64,9 +64,6 @@ System.register(['./coord', './block_library'], function(exports_1, context_1) {
                             || options.z[b.coord.z];
                         b.visible = !hidden;
                     });
-                };
-                Cube.prototype.hideTextures = function (hide) {
-                    this.blocks.forEach(function (b) { return b.hideTextures(hide); });
                 };
                 Cube.prototype.applyShapes = function (shapeCollection) {
                     this._shapeCollection = shapeCollection;

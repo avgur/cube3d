@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../domain/block', '../domain/enums'], function(exports_1, context_1) {
+System.register(['angular2/core', '../domain/block'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', '../domain/block', '../domain/enums'], functio
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, block_1, enums_1;
+    var core_1, block_1;
     var BlockSize, BlockComponent;
     return {
         setters:[
@@ -19,9 +19,6 @@ System.register(['angular2/core', '../domain/block', '../domain/enums'], functio
             },
             function (block_1_1) {
                 block_1 = block_1_1;
-            },
-            function (enums_1_1) {
-                enums_1 = enums_1_1;
             }],
         execute: function() {
             BlockSize = 150;
@@ -43,27 +40,30 @@ System.register(['angular2/core', '../domain/block', '../domain/enums'], functio
                     var str = '';
                     this.block.sides.forEach(function (side) {
                         if (side.trimmed) {
-                            var sideKindName = enums_1.SideKind[side.sideKind];
-                            var k = "trimmed-" + sideKindName;
+                            var k = "trimmed-" + side.sideKindName;
+                            str += k + ' ';
+                        }
+                        if (side.selected) {
+                            var k = "block-selected";
                             str += k + ' ';
                         }
                     });
                     return str;
                 };
                 BlockComponent.prototype.setSideClass = function (side) {
-                    var name = enums_1.SideType[side.sideType];
-                    var className = "sideType-" + name;
+                    var className = "sideType-" + side.sideTypeName;
                     if (side.selected) {
                         className += ' side-selected';
                     }
                     return className;
                 };
-                BlockComponent.prototype.selected = function (side) {
-                    if (this.block.parentCube.selectedSide) {
-                        this.block.parentCube.selectedSide.selected = false;
+                BlockComponent.prototype.select = function (side) {
+                    var oldSelected = this.block.parentCube.selectedSide;
+                    if (oldSelected) {
+                        oldSelected.selected = false;
                     }
-                    side.selected = true;
-                    this.block.parentCube.selectedSide = side;
+                    side.selected = (side !== oldSelected);
+                    this.block.parentCube.selectedSide = side.selected ? side : null;
                 };
                 __decorate([
                     core_1.Input(), 

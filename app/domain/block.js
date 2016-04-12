@@ -1,10 +1,13 @@
-System.register(['./side', './enums'], function(exports_1, context_1) {
+System.register(['./coord', './side', './enums'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var side_1, enums_1;
+    var coord_1, side_1, enums_1;
     var Block;
     return {
         setters:[
+            function (coord_1_1) {
+                coord_1 = coord_1_1;
+            },
             function (side_1_1) {
                 side_1 = side_1_1;
             },
@@ -17,6 +20,11 @@ System.register(['./side', './enums'], function(exports_1, context_1) {
                     this.blockType = blockType;
                     this.coord = coord;
                     this.parentCube = parentCube;
+                    this.coordMap = {
+                        x: [0, 1, 2],
+                        y: [2, 1, 0],
+                        z: [0, 1, 2]
+                    };
                     this.visible = true;
                     this.sides = [];
                     for (var sideKind = enums_1.SideKind.Front; sideKind <= enums_1.SideKind.Bottom; sideKind++) {
@@ -66,12 +74,20 @@ System.register(['./side', './enums'], function(exports_1, context_1) {
                     enumerable: true,
                     configurable: true
                 });
+                Object.defineProperty(Block.prototype, "displayCoord", {
+                    get: function () {
+                        var coord = this.coord;
+                        var x = this.coordMap.x[coord.x];
+                        var y = this.coordMap.y[coord.y];
+                        var z = this.coordMap.z[coord.z];
+                        return new coord_1.Coord(x, y, z);
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
                 Block.prototype.with = function (sideKind, sideType) {
                     this.sides[sideKind].sideType = sideType;
                     return this;
-                };
-                Block.prototype.hideTextures = function (hide) {
-                    this.sides.forEach(function (s) { return s.showTextures = !hide; });
                 };
                 return Block;
             }());

@@ -14,22 +14,59 @@ System.register(['./enums'], function(exports_1, context_1) {
                     this.sideKind = sideKind;
                     this.sideType = sideType;
                     this.parent = parent;
-                    this.showTextures = true;
+                    this.coordMap = {
+                        x: [0, 1, 2],
+                        y: [2, 1, 0],
+                        z: [0, 1, 2]
+                    };
                     this.trimmed = false;
                     this.selected = false;
                 }
+                Object.defineProperty(Side.prototype, "sideTypeTrimmedName", {
+                    get: function () {
+                        var name = this.trimmed ? 'Undefined' : this.sideTypeName;
+                        return name;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(Side.prototype, "sideTypeName", {
+                    get: function () {
+                        var name = enums_1.SideType[this.sideType];
+                        return name;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(Side.prototype, "sideKindName", {
+                    get: function () {
+                        var name = enums_1.SideKind[this.sideKind];
+                        return name;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(Side.prototype, "sideKindIndex", {
+                    get: function () {
+                        return this.sideKind + 1;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
                 Object.defineProperty(Side.prototype, "title", {
                     get: function () {
-                        var sideTypeTitle = enums_1.SideType[this.sideType];
-                        var kindNumber = this.sideKind + 1;
-                        var sideKindTitle = enums_1.SideKind[this.sideKind] + ("(#" + kindNumber + ")");
+                        var sideTypeTitle = this.sideTypeTrimmedName;
+                        var kindNumber = this.sideKindIndex;
+                        var sideKindTitle = this.sideKindName + ("(#" + kindNumber + ")");
                         var belongsToMessage = "";
                         if (this.parent.parentShape) {
                             var shapeName = this.parent.parentShape.name || "NoName";
                             belongsToMessage = " belongs to '" + shapeName + "'";
                         }
-                        var coord = this.parent.coord;
-                        var title = sideTypeTitle + " (x:" + coord.x + ", y:" + coord.y + ", z:" + coord.z + ", " + sideKindTitle + ") " + belongsToMessage;
+                        var x = this.parent.displayCoord.x;
+                        var y = this.parent.displayCoord.y;
+                        var z = this.parent.displayCoord.z;
+                        var title = sideTypeTitle + " (x:" + x + ", y:" + y + ", z:" + z + ", " + sideKindTitle + ") " + belongsToMessage;
                         return title;
                     },
                     enumerable: true,

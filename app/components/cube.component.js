@@ -58,9 +58,6 @@ System.register(['angular2/core', '../domain/cube', '../domain/block_library', '
                 CubeComponent.prototype.toggleShapeVisibility = function (shape) {
                     shape.toggleVisibility();
                 };
-                CubeComponent.prototype.toggleTextures = function () {
-                    //this.cube.hideTextures(!this.textures);
-                };
                 CubeComponent.prototype.reset = function () {
                     this.texturesVisible = true;
                     this.trimmedVisible = false;

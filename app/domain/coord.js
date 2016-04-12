@@ -21,6 +21,13 @@ System.register([], function(exports_1, context_1) {
                     enumerable: true,
                     configurable: true
                 });
+                Object.defineProperty(Coord.prototype, "hash", {
+                    get: function () {
+                        return this.z * 1 + this.y * 3 + this.x * 9;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
                 return Coord;
             }());
             exports_1("Coord", Coord);
