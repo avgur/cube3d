@@ -1,0 +1,12 @@
+<section 
+    [ngStyle]="setBlockStyles()"
+    [ngClass]="setBlockClass()">
+    <div 
+        *ngFor="#side of block.sides">
+        <div 
+            [ngClass]="setSideClass(side)" 
+            title="{{side.title}}"
+            (click)="selected(side)">
+        </div>
+    </div>    
+</section>
