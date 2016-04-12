@@ -25,9 +25,27 @@ module.exports = function(grunt) {
                 }]
             }        
         },
+        /*systemjs: {
+            options: {
+                sfx: false,
+                sourceMaps: false,
+                configFile: "./config.js",
+                minify: true,
+                build: {
+                    mangle: false
+                }
+            },
+            dist: {
+                files: [{
+                    "src":  "app/main.js - angular2/*.js - rxjs/*.js",
+                    "dest": "build/js/app.min.js"
+                }]
+            }
+        },*/        
         uglify: {
             options: {
-                mangle: false
+                mangle: false,
+                sourceMap: false
             },
             my_target: {
                 files: {
@@ -61,23 +79,24 @@ module.exports = function(grunt) {
                 src: '**',
                 dest: 'build/vendors/',
             },
-            config: {
+            release: {
                 expand: true,
-                cwd: '.',
-                src: 'config.js',
-                dest: 'build/',
-            },
+                cwd: 'build/',
+                src: ['**'/*, '!app/ ** / *.js'*/],
+                dest: '../Release/'
+            }
         }
     });
-
-
+    
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks("grunt-ts");
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks("grunt-systemjs-builder");
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-processhtml');
     grunt.loadNpmTasks('grunt-contrib-copy');
-    
 
-    grunt.registerTask('default', ['clean', 'ts', 'copy', 'cssmin', 'uglify', 'processhtml']);
+
+    grunt.registerTask('copy_build', ['copy:templates', 'copy:images', 'copy:vendors']);
+    grunt.registerTask('default', ['clean', 'ts', 'copy_build', /*'systemjs',*/ 'cssmin', 'uglify', 'processhtml', 'copy:release']);
 };
