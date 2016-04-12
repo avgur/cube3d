@@ -40,14 +40,30 @@
             }
         });
     </script>
+    <style>
+        
+
+
+
+
+</style>
   </head>
   <body>
     
-    <app-shell>Loading...</app-shell>
-    
+
+    <app-shell>
+        <div class="showroom">
+            <label>Loading...</label>
+            <article class="viewport">
+                    <span class="loader"><span class="loader-inner"></span></span>
+            </article>
+        </div>
+    </app-shell>
+  
     <script>
       System.import('app/main').then(null, console.error.bind(console));
     </script>
+    
     <script src="vendors/jquery/jquery.js"></script>
     <!-- build:js js/touch.min.js -->
     <script src="js/touch.js"></script>
