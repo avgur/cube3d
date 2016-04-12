@@ -1,0 +1,93 @@
+<div class="showroom">
+<article 
+    class="viewport" 
+    [class.hideTrimmed]="!trimmedVisible"
+    [class.hideTextures]="!texturesVisible">
+    <div class="cube">
+        <div class="axes">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <app-cube-block *ngFor="#block of cube.blocks" [block]="block"></app-cube-block>
+    </div>
+</article>
+</div>
+
+<div class="cube-options">
+    <div class="cube-options-panel">
+        <div class="panel-header">Options</div>
+        <div class="panel-body">
+            <fieldset class="axes">
+                <legend>Axes </legend>
+                <div class="control-group">
+                    <button [disabled]="!canToggleAxis(axisX, 0)" (click)="toggleAxisVisibility(axisX, 0)" [class.inactive]="!axisX[0]">X:1</button>
+                    <button [disabled]="!canToggleAxis(axisX, 1)" (click)="toggleAxisVisibility(axisX, 1)" [class.inactive]="!axisX[1]">X:2</button>
+                    <button [disabled]="!canToggleAxis(axisX, 2)" (click)="toggleAxisVisibility(axisX, 2)" [class.inactive]="!axisX[2]">X:3</button>
+                </div>
+                <div class="control-group">
+                    <button [disabled]="!canToggleAxis(axisY, 0)" (click)="toggleAxisVisibility(axisY, 0)" [class.inactive]="!axisY[0]">Y:1</button>
+                    <button [disabled]="!canToggleAxis(axisY, 1)" (click)="toggleAxisVisibility(axisY, 1)" [class.inactive]="!axisY[1]">Y:2</button>
+                    <button [disabled]="!canToggleAxis(axisY, 2)" (click)="toggleAxisVisibility(axisY, 2)" [class.inactive]="!axisY[2]">Y:3</button>
+                </div>
+                <div class="control-group">
+                    <button [disabled]="!canToggleAxis(axisZ, 0)" (click)="toggleAxisVisibility(axisZ, 0)" [class.inactive]="!axisZ[0]">Z:1</button>
+                    <button [disabled]="!canToggleAxis(axisZ, 1)" (click)="toggleAxisVisibility(axisZ, 1)" [class.inactive]="!axisZ[1]">Z:2</button>
+                    <button [disabled]="!canToggleAxis(axisZ, 2)" (click)="toggleAxisVisibility(axisZ, 2)" [class.inactive]="!axisZ[2]">Z:3</button>
+                </div>
+            </fieldset>
+            <!--
+            <fieldset>
+                <legend>Axis X</legend>
+                <div class="control-group">
+                    <label for="x1">X:1</label> <input type="checkbox" id="x1" [(ngModel)]="axisX[0]"  [checked]="toggleAxisVisibility()" [disabled]="!canToggleAxis(axisX, 0)">
+                    <label for="x2">X:2</label> <input type="checkbox" id="x2" [(ngModel)]="axisX[1]" [checked]="toggleAxisVisibility()" [disabled]="!canToggleAxis(axisX, 1)">
+                    <label for="x3">X:3</label> <input type="checkbox" id="x3" [(ngModel)]="axisX[2]" [checked]="toggleAxisVisibility()" [disabled]="!canToggleAxis(axisX, 2)">
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Axis Y</legend>
+                <div class="control-group">
+                    <label for="y1">Y:1</label> <input type="checkbox" id="y1" [(ngModel)]="axisY[0]"  [checked]="toggleAxisVisibility()" [disabled]="!canToggleAxis(axisY, 0)">
+                    <label for="y2">Y:2</label> <input type="checkbox" id="y2" [(ngModel)]="axisY[1]" [checked]="toggleAxisVisibility()" [disabled]="!canToggleAxis(axisY, 1)">
+                    <label for="y3">Y:3</label> <input type="checkbox" id="y3" [(ngModel)]="axisY[2]" [checked]="toggleAxisVisibility()" [disabled]="!canToggleAxis(axisY, 2)">
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Axis Z</legend>
+                <div class="control-group">
+                    <label for="z1">Z:1</label> <input type="checkbox" id="z1" [(ngModel)]="axisZ[0]"  [checked]="toggleAxisVisibility()" [disabled]="!canToggleAxis(axisZ, 0)">
+                    <label for="z2">Z:2</label> <input type="checkbox" id="z2" [(ngModel)]="axisZ[1]" [checked]="toggleAxisVisibility()" [disabled]="!canToggleAxis(axisZ, 1)">
+                    <label for="z3">Z:3</label> <input type="checkbox" id="z3" [(ngModel)]="axisZ[2]" [checked]="toggleAxisVisibility()"[disabled]="!canToggleAxis(axisZ, 2)">
+                </div>
+            </fieldset>
+            -->
+            <fieldset class="shapes">
+                <legend>Shapes</legend>
+                <div class="control-group">
+                    <button *ngFor="#shape of cube.shapes" (click)="toggleShapeVisibility(shape)"  [class.inactive]="!shape.visible">
+                        {{shape.name}} 
+                    </button>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Misc</legend>
+                <div class="control-group">
+                    <label for="texturesVisible">Textures</label> <input type="checkbox" id="texturesVisible" [(ngModel)]="texturesVisible">
+                </div>
+                <!--
+                <div class="control-group">
+                    <label for="trimmedVisible">Show trimmed</label> <input type="checkbox" id="trimmedVisible" [(ngModel)]="trimmedVisible">
+                </div>
+                -->
+            </fieldset>
+            <div class="control-group actions">
+                <Button (click)="reset()">Reset</Button>
+            </div>
+            <span class="hint">* Use arrows to rotate the cube and "Esc" to reset position</span>
+        </div>
+    </div>
+    
+</div>
+
+<div class="clearfix"></div>
